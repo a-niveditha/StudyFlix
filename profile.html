@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css\profile.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="assets/images/sf.png" alt="SF Logo" class="logo-img">
+            <span>StudyFlix</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="landingpage.html">Home</a></li>
+            <li><a href="playlists.html">Playlists</a></li>
+            <li><a href="notes.html">Notes</a></li>
+        </ul>
+        <div class="profile">
+            <span class="streak">&#128293; 1</span>
+            <a href="profile.html"><span class="profile-icon active">&#128100;</span></a>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+
+        <aside class="sidebar">
+            <div class="profile-pic-main">
+                <svg viewBox="0 0 24 24" class="user-svg-red">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+            </div>
+            <div class="profile-info">
+                <p class="profile-name">John Doe</p>
+                <p><span>Date joined:</span> 15 February 2026</p>
+                <p><span>Branch:</span> Computer Science</p>
+                <p><span>Email:</span> johndoe&#64;gmail.com</p>
+            </div>
+        </aside>
+
+        <main class="dashboard-area">
+
+            <section class="stats-container">
+                <div class="streak-box">
+                    <h3 class="section-label">Streak</h3>
+                    <div class="streak-ring">
+                        <div class="streak-text">1 day &#128293;</div>
+                    </div>
+                </div>
+                <div class="subject-bars">
+                    <div class="sub-item">
+                        <span>DSA</span>
+                        <div class="bar"><div class="fill" style="width:70%"></div></div>
+                    </div>
+                    <div class="sub-item">
+                        <span>CAO</span>
+                        <div class="bar"><div class="fill" style="width:60%"></div></div>
+                    </div>
+                    <div class="sub-item">
+                        <span>TOC</span>
+                        <div class="bar"><div class="fill" style="width:80%"></div></div>
+                    </div>
+                    <div class="sub-item">
+                        <span>ML</span>
+                        <div class="bar"><div class="fill" style="width:55%"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="heatmap-section">
+                <h3 class="section-label">Active Days</h3>
+                <div class="glass-panel">
+                    <div class="heatmap-wrapper" id="heatmap-container"></div>
+                </div>
+            </section>
+
+            <section class="video-section">
+                <h3 class="section-label">Recently Watched</h3>
+                <div class="video-row">
+                    <div class="vid-wrap">
+                        <div class="vid-card" style="background-image:url('assets/images/cao.png')"></div>
+                        <span class="vid-title">Computer Architecture</span>
+                    </div>
+                    <div class="vid-wrap">
+                        <div class="vid-card" style="background-image:url('assets/images/micrprc.png')"></div>
+                        <span class="vid-title">8086 Microprocessor</span>
+                    </div>
+                    <div class="vid-wrap">
+                        <div class="vid-card" style="background-image:url('assets/images/ml.png')"></div>
+                        <span class="vid-title">Transformers</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        var BLOCK_W = 6 * 12 + 5 * 4; // 92px
+        var BLOCK_GAP = 40;
+
+        function buildBlock() {
+            var block = document.createElement('div');
+            block.className = 'month-block';
+            for (var i = 0; i < 30; i++) {
+                var day = document.createElement('div');
+                day.className = 'day-box';
+                if (Math.random() > 0.88) day.className += ' active';
+                block.appendChild(day);
+            }
+            return block;
+        }
+
+        function renderHeatmap() {
+            var container = document.getElementById('heatmap-container');
+            var panel = document.querySelector('.glass-panel');
+            var available = panel.clientWidth - 60;
+            var maxBlocks = Math.floor((available + BLOCK_GAP) / (BLOCK_W + BLOCK_GAP));
+            if (maxBlocks < 1) maxBlocks = 1;
+            var current = container.children.length;
+            if (maxBlocks > current) {
+                for (var i = current; i < maxBlocks; i++) {
+                    container.appendChild(buildBlock());
+                }
+            } else if (maxBlocks < current) {
+                while (container.children.length > maxBlocks) {
+                    container.removeChild(container.lastChild);
+                }
+            }
+        }
+
+        window.addEventListener('load', renderHeatmap);
+
+        var resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(renderHeatmap, 60);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: radial-gradient(circle at 15% 20%, #9b0000 0%, #1a0000 40%, #000000 80%);
+    background-attachment: fixed;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+/* ── Navbar ── */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    z-index: 1000;
+    flex-shrink: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.logo span {
+    color: #ff2e2e;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 55px;
+    list-style: none;
+    font-size: 17px;
+    align-items: center;
+}
+
+.nav-links li {
+    cursor: pointer;
+    padding-bottom: 8px;
+    position: relative;
+    opacity: 0.8;
+    transition: 0.2s ease;
+}
+
+.nav-links li:hover {
+    opacity: 1;
+}
+
+.nav-links .active {
+    opacity: 1;
+}
+
+.nav-links .active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #ff2e2e;
+    border-radius: 3px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 17px;
+}
+
+.streak {
+    font-size: 17px;
+}
+
+.profile-icon {
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    opacity: 0.8;
+}
+
+.profile-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.profile-icon.active {
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    opacity: 0.8;
+}
+
+/* ── Layout ── */
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding-top: 75px;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    width: 300px;
+    padding: 40px;
+    border-right: 1px solid transparent;
+    border-image: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0)) 1;
+    flex-shrink: 0;
+}
+
+.profile-pic-main {
+    width: 170px;
+    height: 170px;
+    background: #222;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #e50914;
+}
+
+.user-svg-red {
+    width: 110px;
+    height: 110px;
+    fill: #e50914;
+}
+
+.profile-info p {
+    font-size: 0.95rem;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.profile-info span {
+    font-weight: bold;
+    color: #fff;
+}
+
+.profile-name {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-align: left !important;
+    margin-bottom: 18px !important;
+}
+
+/* ── Dashboard ── */
+.dashboard-area {
+    flex: 1;
+    padding: 0 50px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.section-label {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ── Stats ── */
+.stats-container {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.streak-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.streak-ring {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 13px solid #222;
+    border-top-color: #e50914;
+    transform: rotate(20deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    box-shadow: 0 0 25px rgba(229, 9, 20, 0.3);
+}
+
+.streak-text {
+    transform: rotate(-20deg);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.subject-bars {
+    flex: 1;
+    max-width: 550px;
+    margin-left: 80px;
+    align-self: flex-end;
+    padding-bottom: 8px;
+}
+
+.sub-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.sub-item span {
+    width: 70px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.bar {
+    height: 14px;
+    background: #222;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.fill {
+    height: 100%;
+    background: #e50914;
+}
+
+/* ── Heatmap ── */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 20px 30px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.heatmap-wrapper {
+    display: flex;
+    gap: 40px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.month-block {
+    display: grid;
+    grid-template-rows: repeat(5, 12px);
+    grid-template-columns: repeat(6, 12px);
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.day-box {
+    border: 1.5px solid #e50914;
+}
+
+.day-box.active {
+    background: #e50914;
+}
+
+/* ── Video Cards ── */
+.video-row {
+    display: flex;
+    gap: 25px;
+    margin-top: 0;
+}
+
+.vid-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vid-card {
+    width: 100%;
+    height: 150px;
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.08);
+    background-size: cover;
+    background-position: center;
+}
+
+.vid-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ccc;
+}
+
+.video-section .section-label {
+    margin-bottom: 10px;
+}
