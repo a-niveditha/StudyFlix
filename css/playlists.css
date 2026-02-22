@@ -10,14 +10,19 @@ body {
     background: radial-gradient(circle at 15% 20%, #9b0000 0%, #1a0000 40%, #000000 80%);
     color: white;
 }
-
+a{
+  color : inherit;
+  text-decoration: none !important;
+}
 /* ===== NAVBAR ===== */
 .navbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 60px;
-  background:#000;
+  width: 100%;
+  height: 75px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
 }
 
 .logo {
@@ -36,24 +41,44 @@ body {
 }
 
 .nav-links{
-  list-style:none;
-  display:flex;
-  gap:40px;
+    display: flex;
+    gap: 55px;
+    list-style: none;
+    font-size: 17px;
 }
 
 .nav-links li{
-  cursor:pointer;
-  color:#ccc;
+    cursor: pointer;
+    padding-bottom: 8px;
+    position: relative;
+    opacity: 0.8;
+    transition: 0.2s ease;
 }
 
-.nav-links .active{
-  color:#fff;
-  border-bottom:3px solid #e50914;
-  padding-bottom:5px;
+.nav-links li:hover {
+    opacity: 1;
+}
+
+.nav-links .active {
+    opacity: 1;
+}
+
+.nav-links .active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: #ff2e2e;
+    border-radius: 3px;
 }
 
 .profile-icon{
-  font-size:22px;
+  display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 17px;
 }
 
 /* ===== CONTENT ===== */

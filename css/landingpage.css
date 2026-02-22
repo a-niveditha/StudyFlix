@@ -9,6 +9,10 @@ body {
     background: radial-gradient(circle at 15% 20%, #9b0000 0%, #1a0000 40%, #000000 80%);
     color: white;
 }
+a{
+  color : inherit;
+  text-decoration: none !important;
+}
 
 /* logo */
 .logo {
@@ -34,11 +38,6 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 80px;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: 600;
 }
 
 .logo span {
