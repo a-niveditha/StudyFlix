@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes</title>
+<link href="notes.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- TOP NAVBAR -->
+<nav>
+  <div class="nav-logo"><h1>Notes</h1></div>
+  <div class="nav-links">
+    <a class="nav-link active">To-Do List</a>
+    <a class="nav-link">Subjects</a>
+  </div>
+  <button class="avatar-btn" title="Profile">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4"/>
+      <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="cards-row">
+
+    <!-- Col 1: TO-DO LIST (no label shown) -->
+    <div class="card-col">
+      <div class="col-label">PINNED:</div>
+      <article class="note-card">
+        <div class="card-title">TO - DO LIST</div>
+        <div class="card-divider"></div>
+        <div class="todo-list">
+          <div class="todo-item done" onclick="toggleDone(this)">
+            <div class="todo-checkbox"></div>
+            <span class="todo-text">Submit DA</span>
+          </div>
+          <div class="todo-item" onclick="toggleDone(this)">
+            <div class="todo-checkbox"></div>
+            <span class="todo-text">Make Notes</span>
+          </div>
+          <div class="todo-item" onclick="toggleDone(this)">
+            <div class="todo-checkbox"></div>
+            <span class="todo-text">Prepare Mod 1 of CAO</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Col 2: DSA — PINNED label visible here -->
+    <div class="card-col">
+      <div class="col-label">PINNED:</div>
+      <article class="note-card">
+        <div class="card-subject-title">DSA</div>
+        <div class="card-subject-sub">MODULE 1</div>
+        <div class="card-divider"></div>
+      </article>
+    </div>
+
+    <!-- Col 3: CAO (no label shown) -->
+    <div class="card-col">
+      <div class="col-label">PINNED:</div>
+      <article class="note-card">
+        <div class="card-subject-title">CAO</div>
+        <div class="card-subject-sub">MODULE 2</div>
+        <div class="card-divider"></div>
+      </article>
+    </div>
+
+  </div>
+</main>
+<script src = "notes.js"></script>
+</body>
+</html>
