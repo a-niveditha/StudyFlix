@@ -9,12 +9,14 @@ body {
     background: radial-gradient(circle at 15% 20%, #9b0000 0%, #1a0000 40%, #000000 80%);
     color: white;
 }
-a{
-  color : inherit;
-  text-decoration: none !important;
+
+a {
+    color: inherit;
+    text-decoration: none !important;
 }
 
-/* logo */
+/* ================= LOGO ================= */
+
 .logo {
     display: flex;
     align-items: center;
@@ -28,6 +30,11 @@ a{
     height: 80px;
     object-fit: contain;
 }
+
+.logo span {
+    color: #ff2e2e;
+}
+
 /* ================= NAVBAR ================= */
 
 .navbar {
@@ -38,10 +45,9 @@ a{
     align-items: center;
     justify-content: space-between;
     padding: 0 80px;
-}
-
-.logo span {
-    color: #ff2e2e;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .nav-links {
@@ -85,22 +91,38 @@ a{
     font-size: 17px;
 }
 
-/* ================= HERO SECTION ================= */
+/* ================= HERO SLIDER ================= */
 
-.hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 70px 100px;
+.hero-slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0;
 }
 
+.slides {
+    display: flex;
+    transition: transform 0.7s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    box-sizing: border-box;
+}
+
+/* HERO TEXT */
+
 .hero-text {
-    width: 55%;
+    max-width: 520px;
 }
 
 .hero-text h1 {
-    font-size: 52px;
-    line-height: 1.2;
+    font-size: 54px;
+    line-height: 1.15;
     margin: 15px 0 20px;
 }
 
@@ -136,6 +158,7 @@ a{
     border-radius: 10px;
     font-size: 15px;
     cursor: pointer;
+    color: white;
 }
 
 .secondary-btn {
@@ -148,60 +171,92 @@ a{
     cursor: pointer;
 }
 
+/* HERO IMAGE - BIGGER SIZE */
+
 .hero-image {
-    width: 40%;
+    flex: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .hero-image img {
-    width: 500px;
+    width: 650px;
+    height: 350px;
+    max-width: 100%;
     border-radius: 18px;
+    object-fit: cover;
 }
 
-/* ================= MAIN CONTENT ================= */
+/* SLIDER ARROWS */
 
-.main-content {
-    padding: 0 100px;
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s;
 }
 
-/* ================= SECTION HEADINGS ================= */
+.arrow:hover {
+    background: #ff2e2e;
+}
+
+.left {
+    left: 30px;
+}
+
+.right {
+    right: 30px;
+}
+
+/* ================= SECTION STYLING ================= */
+
+.section {
+    width: 100%;
+    padding: 60px 100px;
+}
 
 .section h2 {
     font-size: 24px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 /* ================= CONTINUE WATCHING ================= */
 
 .horizontal-scroll {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     overflow-x: auto;
     padding-bottom: 20px;
-    margin-bottom: 70px;
+    margin-bottom: 20px;
+    scrollbar-width: none;
 }
 
 .horizontal-scroll::-webkit-scrollbar {
-    height: 6px;
-}
-
-.horizontal-scroll::-webkit-scrollbar-thumb {
-    background: #ff2e2e;
-    border-radius: 10px;
+    display: none;
 }
 
 /* VIDEO CARDS */
 
 .video-card {
-    width: 360px;
-    position: relative;
+    width: 300px;
     flex-shrink: 0;
+    position: relative;
 }
 
 .video-card img {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 12px;
 }
@@ -237,7 +292,7 @@ a{
     background: #0c0c0c;
     border-radius: 18px;
     overflow: hidden;
-    margin-bottom: 40px;
+    margin: 0 0 40px 0;
 }
 
 .subject-card img {
