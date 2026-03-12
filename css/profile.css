@@ -146,6 +146,7 @@ a {
     justify-content: center;
     align-items: center;
     border: 2px solid #e50914;
+    position: relative;
 }
 
 .user-svg-red {
@@ -237,6 +238,12 @@ a {
     display: flex;
     align-items: center;
     margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sub-item:hover {
+    opacity: 0.8;
 }
 
 .sub-item span {
@@ -266,7 +273,9 @@ a {
     min-height: 120px;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .heatmap-wrapper {
@@ -285,11 +294,51 @@ a {
 }
 
 .day-box {
+    background-color: #222;
+    transition: all 0.3s ease;
     border: 1.5px solid #e50914;
 }
 
-.day-box.active {
-    background: #e50914;
+.day-box.active-1 {
+    background-color: #8b0000;
+    border-color: #e50914;
+}
+
+.day-box.active-2 {
+    background-color: #b30000;
+    border-color: #e50914;
+}
+
+.day-box.active-3 {
+    background-color: #e50914;
+    border-color: #ff6b6b;
+}
+
+.day-box.active-3:hover {
+    background-color: #cc0812;
+    box-shadow: 0 0 8px rgba(229, 9, 20, 0.5);
+}
+
+.day-box:hover {
+    transform: scale(1.2);
+}
+
+/* Tooltip for heatmap */
+.day-box[title]:hover::after {
+    content: attr(data-count);
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #e50914;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+    border: 1px solid #e50914;
+    bottom: 50px;
+    right: 20px;
 }
 
 /* ── Video Cards ── */
@@ -313,6 +362,16 @@ a {
     border: 1px solid rgba(255,255,255,0.08);
     background-size: cover;
     background-position: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.vid-card:hover {
+    transform: scale(1.05);
+    border-color: #e50914;
+    z-index: 100;
 }
 
 .vid-title {
@@ -323,4 +382,283 @@ a {
 
 .video-section .section-label {
     margin-bottom: 10px;
+}
+
+/* ==================== Profile Picture Change Button ==================== */
+.change-pic-btn {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e50914;
+    border: 3px solid white;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(229, 9, 20, 0.3);
+}
+
+.change-pic-btn:hover {
+    background-color: #cc0812;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.5);
+}
+
+#customProfilePic {
+    border: 2px solid #e50914;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ==================== Toast Notifications ==================== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e50914;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideInToast 0.3s ease;
+    z-index: 999;
+    max-width: 300px;
+    display: none;
+}
+
+@keyframes slideInToast {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast.error {
+    background-color: #cc0812;
+}
+
+.toast.warning {
+    background-color: #e50914;
+}
+
+/* ==================== Modal Styles ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+    color: #000;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e50914;
+    padding-bottom: 15px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #000;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #e50914;
+}
+
+/* ==================== Form Styles ==================== */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #e50914;
+    box-shadow: 0 0 8px rgba(229, 9, 20, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #e50914;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #cc0812;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* ==================== Edit Button ==================== */
+.edit-btn {
+    background-color: #e50914;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #cc0812;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+/* ==================== Modal Text Styling ==================== */
+.modal-content h2 {
+    color: #000;
+}
+
+.modal-content p {
+    color: #000;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.modal-content strong {
+    color: #000;
+}
+
+.modal-content ul {
+    color: #000;
+    margin-left: 20px;
+}
+
+.modal-content li {
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.modal-content hr {
+    border: none;
+    border-top: 1px solid #e50914;
+    margin: 15px 0;
+}
+.heatmap-tooltip{
+    position:absolute;
+    background:#111;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:6px;
+    font-size:12px;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 0.15s ease;
+    z-index:1000;
+}
+
+.day-box:hover{
+    transform:scale(1.2);
 }
