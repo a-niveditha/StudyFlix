@@ -10,108 +10,55 @@ body {
     background: radial-gradient(circle at 15% 20%, #9b0000 0%, #1a0000 40%, #000000 80%);
     color: white;
 }
-a{
-  color : inherit;
-  text-decoration: none !important;
-}
+
 /* ===== NAVBAR ===== */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 75px;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 80px;
-    z-index: 1000;
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 60px;
+  background:#000;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 12px;
+    color:#e50914;
     font-size: 28px;
     font-weight: 600;
 }
 
-.logo span {
-    color: #ff2e2e;
-}
-
 .logo-img {
-    width: 80px;
+    width: 80px;  
     height: 80px;
     object-fit: contain;
 }
 
-.nav-links {
-    display: flex;
-    gap: 55px;
-    list-style: none;
-    font-size: 17px;
-    align-items: center;
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:40px;
 }
 
-.nav-links li {
-    cursor: pointer;
-    padding-bottom: 8px;
-    position: relative;
-    opacity: 0.8;
-    transition: 0.2s ease;
+.nav-links li{
+  cursor:pointer;
+  color:#ccc;
 }
 
-.nav-links li:hover {
-    opacity: 1;
+.nav-links .active{
+  color:#fff;
+  border-bottom:3px solid #e50914;
+  padding-bottom:5px;
 }
 
-.nav-links .active {
-    opacity: 1;
-}
-
-.nav-links .active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 3px;
-    background: #ff2e2e;
-    border-radius: 3px;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    font-size: 17px;
-}
-
-.streak {
-    font-size: 17px;
-}
-
-.profile-icon {
-    font-size: 22px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    opacity: 0.8;
-}
-
-.profile-icon:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-.profile-icon.active {
-    opacity: 1;
-    filter: drop-shadow(0 0 4px #ff2e2e);
+.profile-icon{
+  font-size:22px;
 }
 
 /* ===== CONTENT ===== */
 .container{
-  padding: 115px 60px 40px 60px;
+  padding:40px 60px;
 }
 
 .container h1{
