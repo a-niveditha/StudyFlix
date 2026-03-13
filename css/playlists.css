@@ -5,6 +5,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a {
+    color: inherit;
+    text-decoration: none !important;
+}
+
 body {
     font-family: "Segoe UI", sans-serif;
     background: radial-gradient(circle at 15% 20%, #9b0000 0%, #1a0000 40%, #000000 80%);
@@ -43,13 +48,29 @@ body {
 
 .nav-links li{
   cursor:pointer;
-  color:#ccc;
+  padding-bottom: 8px;
+  position: relative;
+  opacity: 0.8;
+  transition: 0.2s ease;
 }
 
-.nav-links .active{
-  color:#fff;
-  border-bottom:3px solid #e50914;
-  padding-bottom:5px;
+.nav-links li:hover { 
+  opacity: 1; 
+}
+
+.nav-links li.active { 
+  opacity: 1; 
+}
+
+.nav-links li.active::after { 
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: #ff2e2e;
+  border-radius: 3px;
 }
 
 .profile-icon{

@@ -32,19 +32,12 @@
       <article class="note-card">
         <div class="card-title">TO - DO LIST</div>
         <div class="card-divider"></div>
-        <div class="todo-list">
-          <div class="todo-item done" onclick="toggleDone(this)">
-            <div class="todo-checkbox"></div>
-            <span class="todo-text">Submit DA</span>
-          </div>
-          <div class="todo-item" onclick="toggleDone(this)">
-            <div class="todo-checkbox"></div>
-            <span class="todo-text">Make Notes</span>
-          </div>
-          <div class="todo-item" onclick="toggleDone(this)">
-            <div class="todo-checkbox"></div>
-            <span class="todo-text">Prepare Mod 1 of CAO</span>
-          </div>
+        <div class="todo-list" id="todo-list">
+          <!-- Items will be added dynamically -->
+        </div>
+        <div class="add-todo">
+          <input type="text" id="new-todo-input" placeholder="Add new to-do">
+          <button id="add-todo-btn">Add</button>
         </div>
       </article>
     </div>
@@ -56,6 +49,7 @@
         <div class="card-subject-title">DSA</div>
         <div class="card-subject-sub">MODULE 1</div>
         <div class="card-divider"></div>
+        <div class="card-content" onclick="editNote('dsa')"></div>
       </article>
     </div>
 
@@ -63,14 +57,28 @@
     <div class="card-col">
       <div class="col-label">PINNED:</div>
       <article class="note-card">
+      <article class="note-card">
         <div class="card-subject-title">CAO</div>
         <div class="card-subject-sub">MODULE 2</div>
         <div class="card-divider"></div>
+        <div class="card-content" onclick="editNote('cao')"></div>
       </article>
     </div>
 
   </div>
 </main>
-<script src = "notes.js"></script>
+
+<!-- Modal for editing notes -->
+<div id="note-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Edit Note</h2>
+    <textarea id="note-textarea" rows="10" cols="50"></textarea>
+    <button id="save-note">Save</button>
+    <button id="cancel-note">Cancel</button>
+  </div>
+</div>
+
+<script src="js/notes.js"></script>
 </body>
 </html>

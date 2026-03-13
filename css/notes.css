@@ -74,10 +74,9 @@ a {
     transition: 0.2s ease;
 }
 
-  .nav-link:hover { opacity: 1; }
-  .nav-link:hover::after { width: 100%; }
-  .nav-link.active { opacity: 1; }
-  .nav-link.active::after { 
+  .nav-links li:hover { opacity: 1; }
+  .nav-links li.active { opacity: 1; }
+  .nav-links li.active::after { 
     content: "";
     position: absolute;
     left: 0;
@@ -150,7 +149,7 @@ a {
     background: var(--card-bg);
     border-radius: 20px;
     width: 100%;
-    min-height: 400px;
+    height: 400px;
     padding: 22px 20px;
     display: flex;
     flex-direction: column;
@@ -206,6 +205,8 @@ a {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    flex: 1;
+    overflow-y: auto;
   }
 
   .todo-item {
@@ -233,21 +234,123 @@ a {
     justify-content: center;
     transition: border-color 0.15s;
     position: relative;
+    appearance: none;
+    cursor: pointer;
   }
 
-  .todo-item.done .todo-checkbox { border-color: #3a7a3a; }
+  .todo-checkbox:checked {
+    border-color: #3a7a3a;
+    background-color: #3a7a3a;
+  }
 
-  .todo-item.done .todo-checkbox::after {
+  .todo-checkbox:checked::after {
     content: '';
     display: block;
     width: 11px;
     height: 11px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpolyline points='1.5,6 5,9.5 10.5,2.5' stroke='%233a7a3a' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpolyline points='1.5,6 5,9.5 10.5,2.5' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: contain;
   }
 
-  .todo-text { 
-    padding-top: 1px; line-height: 1.4;
+  .todo-checkbox:checked + .todo-text {
+    text-decoration: line-through;
+    color: #888;
+  }
+
+  .add-todo {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+
+  #new-todo-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+  }
+
+  #add-todo-btn {
+    padding: 8px 16px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #add-todo-btn:hover {
+    background-color: #b00000;
+  }
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  color: var(--text-dark);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+#note-textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--accent);
+  color: white;
+}
+
+button:hover {
+  background-color: #b00000;
+}
+
+.card-content {
+  flex: 1;
+  cursor: pointer;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.1);
+  white-space: pre-wrap;
+  overflow-y: auto;
 }
 
