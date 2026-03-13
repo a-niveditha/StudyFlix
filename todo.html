@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyFlix – To‑Do</title>
+<link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+
+<!-- TOP NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <img src="assets/images/sf.png" alt="SF Logo" class="logo-img">
+        <span>StudyFlix</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="landingpage.html">Home</a></li>
+        <li><a href="playlists.html">Playlists</a></li>
+        <li><a href="notes.html">Notes</a></li>
+    </ul>
+    <a href="profile.html"><div class="profile-icon">👤</div></a>
+</nav>
+
+<main class="main">
+  <div class="toolbar">
+    <button id="back-notes-btn">Back to Notes</button>
+
+    <div class="add-todo">
+      <input type="text" id="todo-text" placeholder="To-do description">
+      <input type="date" id="todo-due">
+      <button id="add-todo-btn">Add To‑Do</button>
+    </div>
+  </div>
+
+  <div class="todo-list" id="todo-list"></div>
+</main>
+
+<script src="js/todo.js"></script>
+</body>
+</html>

@@ -24,47 +24,34 @@
 
 <!-- MAIN -->
 <main class="main">
-  <div class="cards-row">
+  <!-- Top controls row -->
+  <div class="toolbar">
+    <button id="todo-page-btn">Open To‑Do List</button>
 
-    <!-- Col 1: TO-DO LIST (no label shown) -->
-    <div class="card-col">
-      <div class="col-label">PINNED:</div>
-      <article class="note-card">
-        <div class="card-title">TO - DO LIST</div>
-        <div class="card-divider"></div>
-        <div class="todo-list" id="todo-list">
-          <!-- Items will be added dynamically -->
-        </div>
-        <div class="add-todo">
-          <input type="text" id="new-todo-input" placeholder="Add new to-do">
-          <button id="add-todo-btn">Add</button>
-        </div>
-      </article>
+    <div class="add-note">
+      <input type="text" id="new-note-subject" placeholder="Subject name">
+      <input type="text" id="new-note-module" placeholder="Module name">
+      <button id="add-note-btn">Add note</button>
     </div>
 
-    <!-- Col 2: DSA — PINNED label visible here -->
-    <div class="card-col">
-      <div class="col-label">PINNED:</div>
-      <article class="note-card">
-        <div class="card-subject-title">DSA</div>
-        <div class="card-subject-sub">MODULE 1</div>
-        <div class="card-divider"></div>
-        <div class="card-content" onclick="editNote('dsa')"></div>
-      </article>
+    <div class="subject-filter">
+      <select id="subject-filter">
+        <option value="all">All subjects</option>
+      </select>
     </div>
+  </div>
 
-    <!-- Col 3: CAO (no label shown) -->
-    <div class="card-col">
-      <div class="col-label">PINNED:</div>
-      <article class="note-card">
-      <article class="note-card">
-        <div class="card-subject-title">CAO</div>
-        <div class="card-subject-sub">MODULE 2</div>
-        <div class="card-divider"></div>
-        <div class="card-content" onclick="editNote('cao')"></div>
-      </article>
-    </div>
+  <!-- Notes section -->
+  <div class="notes-rows">
+    <section class="notes-section">
+      <div class="section-title">Pinned</div>
+      <div class="notes-grid" id="pinned-notes"></div>
+    </section>
 
+    <section class="notes-section">
+      <div class="section-title">Other Notes</div>
+      <div class="notes-grid" id="other-notes"></div>
+    </section>
   </div>
 </main>
 
